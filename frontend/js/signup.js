@@ -52,6 +52,10 @@ form.addEventListener("submit", async (event) => {
         }
         showToast(message, "success");
 
+        setTimeout(()=>{
+            window.location.href = "login.html";
+        },2000);
+
         form.reset();
         inputs.forEach(input => {
             input.classList.remove("valid", "invalid");
