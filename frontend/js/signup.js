@@ -45,12 +45,12 @@ form.addEventListener("submit", async (event) => {
             body: JSON.stringify(userData)
         });
 
-        const message = await response.text();
+        const data = await response.json();
 
         if (!response.ok) {
-            throw new Error(message);
+            throw new Error(data.message);
         }
-        showToast(message, "success");
+        showToast(data.message, "success");
 
         setTimeout(()=>{
             window.location.href = "login.html";
@@ -73,6 +73,8 @@ form.addEventListener("submit", async (event) => {
         firstName.focus()
 
     } catch (error) {
+
+        console.log("Error", error);
         showToast(error.message, "error");
     }
 
