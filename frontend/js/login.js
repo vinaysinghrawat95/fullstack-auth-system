@@ -34,17 +34,22 @@ form.addEventListener("submit", async (event) => {
         });
 
         const text = await response.text();
-        
+
         const data = text ? JSON.parse(text) : {};
-        console.log("From Server: ",data);
-        console.log("Data type: ",data.type)
+        console.log("From Server: ", data);
+        console.log("Data type: ", data.type)
 
         if (!response.ok) {
             throw new Error(data.message || "Login Failed");
         }
         // showToast(message, "success");
-      
-        localStorage.setItem("Token", data.jwtToken);
+
+        localStorage.setItem("token", data.jwtToken);
+
+        setTimeout(() => {
+            window.location.href = "home.html"
+
+        }, 2000);
 
         form.reset();
         email.focus();
@@ -74,14 +79,14 @@ toggleIcon.addEventListener("click", () => {
 });
 
 
-const showToast = (() =>{
+const showToast = (() => {
     toast.textContent = "Invalid credential, Try Again!";
     toast.className = "show"
     toast.classList.add("error");
-    
 
-    setTimeout(()=>{
+
+    setTimeout(() => {
         toast.classList.remove("show", "error");
-    },3000);
+    }, 3000);
 
 });
