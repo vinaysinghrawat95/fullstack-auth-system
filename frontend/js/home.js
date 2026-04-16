@@ -27,13 +27,13 @@ const fun = async () => {
             }
         );
 
-        const data = await response.json();
-
         if (!response.ok) {
             localStorage.removeItem("token");
             window.location.href = "login.html";
             return;
         }
+
+        const data = await response.json();
 
         userId.textContent = data.id;
         usernameCard.textContent = data.username;

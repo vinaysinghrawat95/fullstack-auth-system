@@ -111,9 +111,13 @@ email.addEventListener("input", () => {
         return;
     }
 
-    if (emailPattern.test(email.value)) {
+    
+    let emailOriginalValue = email.value;
+    let emailLowerCaseValue = (email.value).toLowerCase();
+
+    if (emailPattern.test(email.value) && emailOriginalValue === emailLowerCaseValue) {
         email.classList.add("valid");
-        email.classList.remove("invalid")
+        email.classList.remove("invalid");
     } else {
         email.classList.add("invalid");
         email.classList.remove("valid");
